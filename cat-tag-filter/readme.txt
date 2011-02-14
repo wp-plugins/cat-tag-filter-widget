@@ -6,11 +6,11 @@ Requires at least: 2.8
 Tested up to: 3.0.5
 Stable tag: 0.1
 
-This plugin adds a widget to you WordPress site that gives yor visitors an opportunity to filter all your posts by a category or/and tag.
+This plugin adds a widget to your WordPress site that gives yor visitors an opportunity to filter all your posts by a category or/and tag.
 
 == Description ==
 
-This plugin adds a widget to you WordPress site that gives yor visitors an opportunity to filter all your posts by a category or/and tag.
+This plugin adds a widget to your WordPress site that gives yor visitors an opportunity to filter all your posts by a category or/and tag.
 Basicly it will just generate a link like http://yourblog.com/category/some-category?tag=some-tag and redirect visitor to this address.
 
 == Installation ==
