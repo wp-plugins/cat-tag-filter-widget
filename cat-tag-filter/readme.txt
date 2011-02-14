@@ -58,7 +58,16 @@ You can also override `before_title` and `after_title` the same way.
 2. This is how it looks on my blog
 3. These are the widget options
 
+== Frequently Asked Questions ==
+
+None.
+
 == Changelog ==
 
 = 0.1 =
 * Plugins first publication
+
+
+== Upgrade Notice ==
+
+None.
