@@ -10,8 +10,14 @@ This plugin adds a widget to your WordPress site that gives yor visitors an oppo
 
 == Description ==
 
-This plugin adds a widget to your WordPress site that gives yor visitors an opportunity to filter all your posts by a category or/and tag.
-Basicly it will just generate a link like http://yourblog.com/category/some-category?tag=some-tag and redirect visitor to this address.
+If you were searching for an easy way to let your WordPress site visitors to filter your content by a category and a tag in the same time, this plugin will help you a lot. It will add a widget to your widgets admin page, where you can edit the settings and put it in any "widgetized" place on your website.
+
+This plugin will be very useful for websites with hundreds of categories and tags. I wrote it for my travel blog where we have categories for places that we'd been and tags for topics like video, photo, usefull, mountains, beaches e.t.c.
+So I wanted to give my visitors an ability to easily filter content by any category plus tag, like **category India + tag Video**. WordPress has the ability to show such pages, we just need to pass the proper address to it. So this what is done by this small plugin - it gives you two selectors - one for your categories and one for tags, you can choose any combination and view the filtered content.
+
+In the future I'm planning to add a second tag feature, so people would be able filter posts like **category India + tag Motorcycles + tag Usefull**, please send me your ideas of implementation, the PHP code is almost ready - I just don't know how to add it without ruining the simplicity of the widget. 
+
+If your template doesn't support widgets, please see the Installation tab, there are some instructions on how to manually add this widget in your template files. 
 
 == Installation ==
 
@@ -46,6 +52,11 @@ If you want to get rid of div's that WordPress creates before and after all the 
 You can also override `before_title` and `after_title` the same way.
 
 
+== Screenshots ==
+
+1. This is how the plugin looks in twentyten, almost no styling.
+2. This is how it looks on my blog
+3. These are the widget options
 
 == Changelog ==
 
