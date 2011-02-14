@@ -15,7 +15,7 @@ If you were searching for an easy way to let your WordPress site visitors to fil
 This plugin will be very useful for websites with hundreds of categories and tags. I wrote it for my travel blog where we have categories for places that we'd been and tags for topics like video, photo, usefull, mountains, beaches e.t.c.
 So I wanted to give my visitors an ability to easily filter content by any category plus tag, like **category India + tag Video**. WordPress has the ability to show such pages, we just need to pass the proper address to it. So this what is done by this small plugin - it gives you two selectors - one for your categories and one for tags, you can choose any combination and view the filtered content.
 
-In the future I'm planning to add a second tag feature, so people would be able filter posts like **category India + tag Motorcycles + tag Usefull**, please send me your ideas of implementation, the PHP code is almost ready - I just don't know how to add it without ruining the simplicity of the widget. 
+In the future I'm planning to add a second tag feature, so people would be able filter posts like **category India + tag Motorcycles + tag Useful**, please send me your ideas of implementation, the PHP code is almost ready - I just don't know how to add it without ruining the simplicity of the widget. 
 
 If your template doesn't support widgets, please see the Installation tab, there are some instructions on how to manually add this widget in your template files. 
 
