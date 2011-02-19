@@ -4,7 +4,7 @@ Donate link:
 Tags: filter, tags, categories, widget
 Requires at least: 2.8
 Tested up to: 3.0.5
-Stable tag: 0.1
+Stable tag: 0.2
 
 This plugin adds a widget to your WordPress site that gives your visitors an ability to filter all your posts by a category or/and tag.
 
@@ -21,6 +21,8 @@ Please send me your ideas of implementation, the PHP code is almost ready - I ju
 If your WordPress template doesn't support widgets, please see the `Installation` tab, there are some instructions on how to manually add this widget in your template files. 
 
 == Installation ==
+
+!If you failed to install 0.1 version, delete Cat + Tag Filter from admin console and install 0.2 version.
 
 1. Go to your Wordpress admin dashboard -> Plugins -> Add new, then search for **Cat + Tag Fliter** and agree to install it.
 
@@ -67,6 +69,9 @@ You can also override `before_title` and `after_title` the same way.
 None.
 
 == Changelog ==
+
+= 0.2 =
+* Fixed the "no valid header" error during plugin installation.
 
 = 0.1 =
 * Plugins first publication
