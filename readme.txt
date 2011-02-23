@@ -30,7 +30,7 @@ If it didn't work, try this:
 
 1. Upload `cat-tag-filter` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to your widgets settings and ass Cat + Tag Filter widget to your sidebar.
+3. Go to your widgets settings and add Cat + Tag Filter widget to your sidebar.
 
 If your theme doesn't support widgets, you can use this code:
 
