@@ -30,15 +30,20 @@ header('Location: ' . $url);
 }
 else{
 if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) exit('Please do not load this page directly');}
+$str = $_SERVER['QUERY_STRING'];
+parse_str($str, $args);
+if ($args[category_name] !='') $current_cat = $args[category_name];
+if ($args[tag] !='') $current_tag = $args[tag];
 
 function child_cats_list($parent, $level){
-  global $ctf_options;
-  global $categories;
+  global $ctf_options, $categories, $current_cat;
   foreach ($categories as $category) 
     { 
       if ($category->parent == $parent)
         {
-          $options .= '<option value="' . $category->category_nicename . '">';
+          $options .= '<option value="' . $category->category_nicename . '"';
+		  if (is_category($category->cat_name) || $category->category_nicename == $current_cat) $options .= ' selected="selected" ';
+		  $options .= '>';
           for ($i=0;$i<$level;$i++)
             { 
             $options .="&nbsp;&nbsp;";
@@ -58,10 +63,12 @@ function cat_options(){
   return child_cats_list(0, 0);
 }
 function tag_options(){
-  global $ctf_options; 
+  global $ctf_options, $current_tag; 
   $tags = get_tags();
   foreach ($tags as $tag) {
-    $options .= '<option value="'.$tag->slug.'">';
+    $options .= '<option value="' . $tag->slug . '"';
+	if (is_tag($tag->slug) || $tag->slug == $current_tag) $options .= ' selected="selected" ';
+	$options .= '>';
     $options .= $tag->name;
     if ($ctf_options['tags_count'] == 1) $options .= ' (' . $tag->count . ')';
     $options .= '</option>';    
