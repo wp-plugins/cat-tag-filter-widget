@@ -71,7 +71,7 @@ None.
 == Changelog ==
 
 = 0.2.2 =
-* Plugins widget now retaines the selected category and tag.
+* Plugin's widget now retains the selected category and tag.
 
 = 0.2.1 =
 * Fixed the output of all tags in the page source code. Please update ASAP, because this bug was inserting a big amount of text in your page source code - very bad for your website indexing by search engines.
