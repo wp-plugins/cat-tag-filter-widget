@@ -3,8 +3,8 @@ Contributors: ajayver
 Donate link: 
 Tags: filter, tags, categories, widget
 Requires at least: 2.8
-Tested up to: 3.1.2
-Stable tag: 0.2.2
+Tested up to: 3.3.1
+Stable tag: 0.3
 
 This plugin adds a widget to your WordPress site that gives your visitors an ability to filter all your posts by a category or/and tag.
 
@@ -44,8 +44,9 @@ Here is a full list of default $instance arguments:
 'all_cats_text' => 'Any category'
 'all_tags_text' => 'Any tag'
 'cats_count' => 1 
-'tags_count' => 0 `
-
+'tags_count' => 0 
+'tags_logic' => 'AND' 
+'tags_type' => 'dropdown'`
 
 If you want to override some settings, for example get rid of title and turn on the counter for tag list use this code:
 
@@ -69,6 +70,10 @@ You can also override `before_title` and `after_title` the same way.
 None.
 
 == Changelog ==
+
+= 0.3 =
+* New option added: "Show tags as checkboxes". Now users can choose several tags.
+* Added the donation button in widgets options. Please consider donating! Thank you!
 
 = 0.2.2 =
 * Plugin's widget now retains the selected category and tag.

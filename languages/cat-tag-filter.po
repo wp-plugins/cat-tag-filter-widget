@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cat + Tag Filter\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-14 01:23+0800\n"
-"PO-Revision-Date: 2011-02-14 01:23+0800\n"
+"POT-Creation-Date: 2012-02-13 17:10+0800\n"
+"PO-Revision-Date: 2012-02-13 17:10+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,71 +13,79 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../cat-tag-filter.php:67
-#: ../cat-tag-filter.php:94
-#: ../cat-tag-filter.php:126
-msgid "Any category"
-msgstr ""
-
-#: ../cat-tag-filter.php:74
-#: ../cat-tag-filter.php:94
-#: ../cat-tag-filter.php:126
+#: ../cat-tag-filter.php:96
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
 msgid "Any tag"
 msgstr ""
 
-#: ../cat-tag-filter.php:89
+#: ../cat-tag-filter.php:115
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
+msgid "Any category"
+msgstr ""
+
+#: ../cat-tag-filter.php:139
 msgid "Filter posts by category and tag"
 msgstr ""
 
-#: ../cat-tag-filter.php:94
-#: ../cat-tag-filter.php:126
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
 msgid "Filter"
 msgstr ""
 
-#: ../cat-tag-filter.php:94
-#: ../cat-tag-filter.php:126
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
 msgid "Show posts"
 msgstr ""
 
-#: ../cat-tag-filter.php:94
-#: ../cat-tag-filter.php:126
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
 msgid "Show posts from:"
 msgstr ""
 
-#: ../cat-tag-filter.php:94
-#: ../cat-tag-filter.php:126
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
 msgid "With tag:"
 msgstr ""
 
-#: ../cat-tag-filter.php:131
+#: ../cat-tag-filter.php:185
 msgid "Widget title"
 msgstr ""
 
-#: ../cat-tag-filter.php:137
+#: ../cat-tag-filter.php:191
 msgid "Categories dropdown label"
 msgstr ""
 
-#: ../cat-tag-filter.php:143
+#: ../cat-tag-filter.php:197
 msgid "All categories option text"
 msgstr ""
 
-#: ../cat-tag-filter.php:150
+#: ../cat-tag-filter.php:204
 msgid "Show categories post count"
 msgstr ""
 
-#: ../cat-tag-filter.php:155
+#: ../cat-tag-filter.php:209
 msgid "Tags dropdown label"
 msgstr ""
 
-#: ../cat-tag-filter.php:161
+#: ../cat-tag-filter.php:215
 msgid "All tags option text"
 msgstr ""
 
-#: ../cat-tag-filter.php:168
+#: ../cat-tag-filter.php:222
+msgid "Allow selecting multiple tags with checkboxes"
+msgstr ""
+
+#: ../cat-tag-filter.php:228
+msgid "Use AND logic for multiple tags instead of OR"
+msgstr ""
+
+#: ../cat-tag-filter.php:234
 msgid "Show tags post count"
 msgstr ""
 
-#: ../cat-tag-filter.php:173
+#: ../cat-tag-filter.php:239
 msgid "Button title"
 msgstr ""
 
