@@ -1,15 +1,26 @@
 <?php
 /*
 Plugin Name: Cat + Tag Filter
-Plugin URI: 
+Plugin URI: http://wordpress.org/extend/plugins/cat-tag-filter-widget/
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
 Version: 0.3
 Author URI: http://traveliving.org/
+License: GPL2
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
-    
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License, version 2, as 
+    published by the Free Software Foundation.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+
 
 if ($_POST["ctf_submit"] == 1) {
 	$tag_prefix = '?tag=';
