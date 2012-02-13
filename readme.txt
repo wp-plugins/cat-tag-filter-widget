@@ -10,13 +10,10 @@ This plugin adds a widget to your WordPress site that gives your visitors an abi
 
 == Description ==
 
-If you were searching for an easy way to let your WordPress site visitors to filter your content by a category and a tag in the same time, this plugin will help you a lot. It will add a widget to your widgets admin page, where you can edit the settings and put it in any "widgetized" place on your website.
+If you were searching for an easy way to let your WordPress site visitors to filter your content by a category and several tags in the same time, this plugin will help you a lot. It will add a widget to your widgets admin page, where you can edit the settings and put it in any "widgetized" place on your website.
 
 This plugin will be very useful for websites with hundreds of categories and tags. I wrote it for my travel blog where we have categories for places that we'd been and tags for topics like video, photo, useful, mountains, beaches e.t.c.
-So I wanted to give my visitors an ability to easily filter content by any category plus tag, like **category India + tag Video**. WordPress has the ability to show such pages, we just need to pass the proper address to it. So this what is done by this small plugin - it gives you two selectors - one for your categories and one for tags - you can choose any combination of them and view the filtered content.
-
-In the future I'm planning to add a second tag feature, so people would be able to filter posts like **category India + tag Motorcycles + tag Useful**. 
-Please send me your ideas of implementation, the PHP code is almost ready - I just don't know how to add it without ruining the simplicity of the widget. 
+So I wanted to give my visitors an ability to easily filter content by any category plus tag, like **category India + tag Video + tag Mountains**. WordPress has the ability to show such pages, we just need to pass the proper address to it. 
 
 If your WordPress template doesn't support widgets, please see the `Installation` tab, there are some instructions on how to manually add this widget in your template files. 
 
