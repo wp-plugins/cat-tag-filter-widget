@@ -4,7 +4,7 @@ Plugin Name: Cat + Tag Filter
 Plugin URI: 
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
-Version: 0.3.2
+Version: 0.3.3
 Author URI: http://traveliving.org/
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
@@ -20,7 +20,7 @@ if ($_POST["ctf_submit"] == 1) {
 		$tag_prefix = '&tag=';
 	} 
 
-	if ($_POST["tag"][0] != -1) {
+	if ($_POST["tag"] && $_POST["tag"][0] != -1) {
 		$tag .= $tag_prefix;
 		$i = 0;
 		foreach ($_POST["tag"] as $tags){	
@@ -41,8 +41,13 @@ else {
 	
 $str = $_SERVER['QUERY_STRING'];
 parse_str($str, $args);
+
 if ($args[category_name] !='') $current_cat = $args[category_name];
-if ($args[tag] !='') $current_tag = $args[tag];
+if ($args[tag]){ 
+$args[tag] = str_replace(" ", ",", $args[tag]);
+
+$args[tag] = explode(",", $args[tag]);
+$current_tag = $args[tag];}
 
 function child_cats_list($parent, $level){
   
@@ -82,7 +87,7 @@ function tag_options($type){
     $options .= '<input type="checkbox" name="';
 	$options .= "tag[]";
 	$options .= '" value="' . $tag->slug . '"';
-	if (is_tag($tag->slug) || $tag->slug == $current_tag) $options .= ' checked ';
+	if (is_array($current_tag)) {if (in_array($tag->slug, $current_tag)) $options .= ' checked ';}
 	$options .= '>';
     $options .= $tag->name;
     if ($ctf_options['tags_count'] == 1) $options .= ' (' . $tag->count . ')';
@@ -97,7 +102,7 @@ function tag_options($type){
   $options .= '</option>'; 
   foreach ($tags as $tag) {
     $options .= '<option value="' . $tag->slug . '"';
-	if (is_tag($tag->slug) || $tag->slug == $current_tag) $options .= ' selected="selected" ';
+	if (is_array($current_tag)) {if (in_array($tag->slug, $current_tag)) $options .= ' selected="selected" ';}
 	$options .= '>';
     $options .= $tag->name;
     if ($ctf_options['tags_count'] == 1) $options .= ' (' . $tag->count . ')';
