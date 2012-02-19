@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cat + Tag Filter\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 17:10+0800\n"
-"PO-Revision-Date: 2012-02-13 17:10+0800\n"
+"POT-Creation-Date: 2012-02-19 13:10+0800\n"
+"PO-Revision-Date: 2012-02-19 13:10+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -49,43 +49,59 @@ msgstr ""
 msgid "With tag:"
 msgstr ""
 
-#: ../cat-tag-filter.php:185
+#: ../cat-tag-filter.php:190
 msgid "Widget title"
 msgstr ""
 
-#: ../cat-tag-filter.php:191
+#: ../cat-tag-filter.php:196
 msgid "Categories dropdown label"
 msgstr ""
 
-#: ../cat-tag-filter.php:197
+#: ../cat-tag-filter.php:202
 msgid "All categories option text"
 msgstr ""
 
-#: ../cat-tag-filter.php:204
+#: ../cat-tag-filter.php:209
 msgid "Show categories post count"
 msgstr ""
 
-#: ../cat-tag-filter.php:209
+#: ../cat-tag-filter.php:214
 msgid "Tags dropdown label"
 msgstr ""
 
-#: ../cat-tag-filter.php:215
+#: ../cat-tag-filter.php:220
 msgid "All tags option text"
 msgstr ""
 
-#: ../cat-tag-filter.php:222
-msgid "Allow selecting multiple tags with checkboxes"
+#: ../cat-tag-filter.php:226
+msgid "How to show tags:"
 msgstr ""
 
-#: ../cat-tag-filter.php:228
-msgid "Use AND logic for multiple tags instead of OR"
+#: ../cat-tag-filter.php:230
+msgid "Dropdown list"
 msgstr ""
 
-#: ../cat-tag-filter.php:234
-msgid "Show tags post count"
+#: ../cat-tag-filter.php:233
+msgid "Checkboxes"
 msgstr ""
 
 #: ../cat-tag-filter.php:239
+msgid "Logic operator for multiple tags:"
+msgstr ""
+
+#: ../cat-tag-filter.php:243
+msgid "OR"
+msgstr ""
+
+#: ../cat-tag-filter.php:246
+msgid "AND"
+msgstr ""
+
+#: ../cat-tag-filter.php:253
+msgid "Show tags post count"
+msgstr ""
+
+#: ../cat-tag-filter.php:258
 msgid "Button title"
 msgstr ""
 
