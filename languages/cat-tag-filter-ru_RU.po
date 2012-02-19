@@ -1,0 +1,118 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cat + Tag Filter\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-19 13:10+0800\n"
+"PO-Revision-Date: 2012-02-19 13:11+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../cat-tag-filter.php:96
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
+msgid "Any tag"
+msgstr "Любым тегом"
+
+#: ../cat-tag-filter.php:115
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
+msgid "Any category"
+msgstr "Любой категории"
+
+#: ../cat-tag-filter.php:139
+msgid "Filter posts by category and tag"
+msgstr "Фильтр записей по категории и тегу"
+
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
+msgid "Filter"
+msgstr "Фильтр"
+
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
+msgid "Show posts"
+msgstr "Показать посты"
+
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
+msgid "Show posts from:"
+msgstr "Показать посты из:"
+
+#: ../cat-tag-filter.php:144
+#: ../cat-tag-filter.php:180
+msgid "With tag:"
+msgstr "С тегом:"
+
+#: ../cat-tag-filter.php:190
+msgid "Widget title"
+msgstr "Заголовок виджета"
+
+#: ../cat-tag-filter.php:196
+msgid "Categories dropdown label"
+msgstr "Надпись над категориями"
+
+#: ../cat-tag-filter.php:202
+msgid "All categories option text"
+msgstr "Первый пункт в списке категорий"
+
+#: ../cat-tag-filter.php:209
+msgid "Show categories post count"
+msgstr "Показывать счетчик постов в списке категорий"
+
+#: ../cat-tag-filter.php:214
+msgid "Tags dropdown label"
+msgstr "Надпись над тегами"
+
+#: ../cat-tag-filter.php:220
+msgid "All tags option text"
+msgstr "Первый пункт в списке тегов"
+
+#: ../cat-tag-filter.php:226
+msgid "How to show tags:"
+msgstr "Как показывать теги:"
+
+#: ../cat-tag-filter.php:230
+msgid "Dropdown list"
+msgstr "Выпадающий список"
+
+#: ../cat-tag-filter.php:233
+msgid "Checkboxes"
+msgstr "Чекбоксы"
+
+#: ../cat-tag-filter.php:239
+msgid "Logic operator for multiple tags:"
+msgstr "Логический оператор при выборе нескольких тегов"
+
+#: ../cat-tag-filter.php:243
+msgid "OR"
+msgstr "ИЛИ"
+
+#: ../cat-tag-filter.php:246
+msgid "AND"
+msgstr "И"
+
+#: ../cat-tag-filter.php:253
+msgid "Show tags post count"
+msgstr "Показывать счетчик постов в списке тегов"
+
+#: ../cat-tag-filter.php:258
+msgid "Button title"
+msgstr "Надпись на кнопке"
+
+#~ msgid "Allow selecting multiple tags with checkboxes"
+#~ msgstr "Позволить пользователю выбирать несколько тегов"
+
+#~ msgid "Use AND logic for multiple tags instead of OR"
+#~ msgstr "Использовать логику И, вместо ИЛИ при выборе нескольких тегов"
+
+#~ msgid ""
+#~ "This plugin adds a widget to your WordPress site that allows your "
+#~ "visitors to filter posts by category and one or two tags."
+#~ msgstr ""
+#~ "Плагин позволяет добавить виджет фильтра записей по категории и тегу."
