@@ -4,7 +4,7 @@ Plugin Name: Cat + Tag Filter
 Plugin URI: 
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
-Version: 0.3.3
+Version: 0.4
 Author URI: http://traveliving.org/
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
@@ -73,13 +73,17 @@ function child_cats_list($parent, $level){
   return $options;
 } 
 function cat_options(){
-  global $categories;
-  $categories =  get_categories('pad_counts=1');
+  global $ctf_options, $categories;
+  if ($ctf_options['exclude_cats'] != '') $args = '&exclude=' . $ctf_options['exclude_cats']; 
+  else $args = '';
+  $categories =  get_categories('pad_counts=1' . $args);
   return child_cats_list(0, 0);
 }
 function tag_options($type){
-  global $ctf_options, $current_tag; 
-  $tags = get_tags();
+  global $ctf_options, $current_tag;
+  if ($ctf_options['exclude_tags'] != '') $args = 'exclude=' . $ctf_options['exclude_tags']; 
+  else $args = '';
+  $tags = get_tags($args);
   if ($type == 1){
    $options .= '<ul>';
   foreach ($tags as $tag) {
@@ -146,7 +150,7 @@ class cat_tag_filter extends WP_Widget {
   }
   /** @see WP_Widget::widget */
   function widget($args, $instance) {	
-	  $defaults = array( 'title' => __('Filter', 'cat-tag-filter'), 'button_title' => __('Show posts', 'cat-tag-filter'), 'cat_list_label' => __('Show posts from:', 'cat-tag-filter'), 'tag_list_label' => __('With tag:', 'cat-tag-filter'), 'all_cats_text' => __('Any category', 'cat-tag-filter'), 'all_tags_text' => __('Any tag', 'cat-tag-filter'), 'cats_count' => 1, 'tags_count' => 0, 'tag_logic' => 1, 'tag_type' => 0 );
+	  $defaults = array( 'title' => __('Filter', 'cat-tag-filter'), 'button_title' => __('Show posts', 'cat-tag-filter'), 'cat_list_label' => __('Show posts from:', 'cat-tag-filter'), 'tag_list_label' => __('With tag:', 'cat-tag-filter'), 'all_cats_text' => __('Any category', 'cat-tag-filter'), 'all_tags_text' => __('Any tag', 'cat-tag-filter'), 'cats_count' => 1, 'tags_count' => 0, 'tag_logic' => 1, 'tag_type' => 0, 'exclude_tags' => '', 'exclude_cats' => '');
     $instance = wp_parse_args( (array) $instance, $defaults );
     extract( $args );
     global $ctf_options;
@@ -160,6 +164,8 @@ class cat_tag_filter extends WP_Widget {
     $ctf_options['tags_count'] =  $instance['tags_count'];
 	$ctf_options['tag_logic'] =  $instance['tag_logic'];
 	$ctf_options['tag_type'] =  $instance['tag_type'];
+	$ctf_options['exclude_tags'] = $instance['exclude_tags'];
+	$ctf_options['exclude_cats'] = $instance['exclude_cats'];
     echo $before_widget; 
     if ( $ctf_options['title'] ) echo $before_title . $ctf_options['title'] . $after_title; 
     ctf_widget();
@@ -178,11 +184,13 @@ class cat_tag_filter extends WP_Widget {
   	$instance['tags_count'] = $new_instance['tags_count'];
 	$instance['tag_logic'] = $new_instance['tag_logic'];
 	$instance['tag_type'] = $new_instance['tag_type'];
+	$instance['exclude_tags'] = $new_instance['exclude_tags'];
+	$instance['exclude_cats'] = $new_instance['exclude_cats'];
     return $instance;
   }
   /** @see WP_Widget::form */
   function form($instance) {   
-    $defaults = array( 'title' => __('Filter', 'cat-tag-filter'), 'button_title' => __('Show posts', 'cat-tag-filter'), 'cat_list_label' => __('Show posts from:', 'cat-tag-filter'), 'tag_list_label' => __('With tag:', 'cat-tag-filter'), 'all_cats_text' => __('Any category', 'cat-tag-filter'), 'all_tags_text' => __('Any tag', 'cat-tag-filter'), 'cats_count' => 1, 'tags_count' => 0, 'tag_logic' => 1, 'tag_type' => 0 );
+    $defaults = array( 'title' => __('Filter', 'cat-tag-filter'), 'button_title' => __('Show posts', 'cat-tag-filter'), 'cat_list_label' => __('Show posts from:', 'cat-tag-filter'), 'tag_list_label' => __('With tag:', 'cat-tag-filter'), 'all_cats_text' => __('Any category', 'cat-tag-filter'), 'all_tags_text' => __('Any tag', 'cat-tag-filter'), 'cats_count' => 1, 'tags_count' => 0, 'tag_logic' => 1, 'tag_type' => 0, 'exclude_tags' => '', 'exclude_cats' => '' );
   	$instance = wp_parse_args( (array) $instance, $defaults ); 				
     ?>   
 	<p>
@@ -213,7 +221,13 @@ class cat_tag_filter extends WP_Widget {
       <label for="ctf-cats-count">
         <?php _e('Show categories post count', 'cat-tag-filter'); ?> 
       </label>   
-    </p>  
+    </p>
+	<p>    
+      <label for="ctf-exclude_cats">
+        <?php _e('Coma separated category id\'s to exclude', 'cat-tag-filter'); ?>: 
+      </label>    
+      <input type="text" id="ctf-exclude_cats" name="<?php echo $this->get_field_name('exclude_cats'); ?>" value="<?php echo esc_attr($instance['exclude_cats']);?>" />   
+    </p>
     <p>    
       <label for="ctf-tag-list-title">
         <?php _e('Tags dropdown label', 'cat-tag-filter'); ?>: 
@@ -258,6 +272,12 @@ class cat_tag_filter extends WP_Widget {
         <?php _e('Show tags post count', 'cat-tag-filter'); ?> 
       </label>   
     </p>  
+	<p>    
+      <label for="ctf-exclude_tags">
+        <?php _e('Coma separated tag id\'s to exclude', 'cat-tag-filter'); ?>: 
+      </label>    
+      <input type="text" id="ctf-exclude_tags" name="<?php echo $this->get_field_name('exclude_tags'); ?>" value="<?php echo esc_attr($instance['exclude_tags']);?>" />   
+    </p>
     <p>    
       <label for="ctf-button-title">
         <?php _e('Button title', 'cat-tag-filter'); ?>: 
