@@ -4,7 +4,7 @@ Plugin Name: Cat + Tag Filter
 Plugin URI: 
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
-Version: 0.4
+Version: 0.4.1
 Author URI: http://traveliving.org/
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
@@ -12,6 +12,7 @@ Author URI: http://traveliving.org/
 */
 
 if ($_POST["ctf_submit"] == 1) {
+	$cat = '';
 	$tag_prefix = '?tag=';
 	if ($_POST["tag_logic"] == 1) $tag_logic = '+';
 	else $tag_logic = ',';
