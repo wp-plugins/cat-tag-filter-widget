@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: ajayver
-Donate link: 
+Donate link: http://goo.gl/SCdKg
 Tags: filter, tags, categories, widget
 Requires at least: 2.8
 Tested up to: 3.3.2

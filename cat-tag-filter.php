@@ -5,7 +5,7 @@ Plugin URI:
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
 Version: 0.6
-Author URI: http://traveliving.org/
+Author URI: http://ajayver.com/ 
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
     
