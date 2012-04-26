@@ -3,8 +3,8 @@ Contributors: ajayver
 Donate link: 
 Tags: filter, tags, categories, widget
 Requires at least: 2.8
-Tested up to: 3.3.1
-Stable tag: 0.5
+Tested up to: 3.3.2
+Stable tag: 0.6
 
 This plugin adds a widget to your WordPress site that gives your visitors an ability to filter all your posts by a category or/and tag.
 
@@ -70,6 +70,9 @@ You can also override `before_title` and `after_title` the same way.
 None.
 
 == Changelog ==
+
+= 0.6 =
+* Added custom taxonomies support (beta).
 
 = 0.5 =
 * Added static front page support.

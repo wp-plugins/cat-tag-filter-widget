@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cat + Tag Filter\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-27 16:00+0800\n"
-"PO-Revision-Date: 2012-02-27 16:00+0800\n"
+"POT-Creation-Date: 2012-04-06 20:01+0800\n"
+"PO-Revision-Date: 2012-04-06 20:01+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,102 +14,113 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../cat-tag-filter.php:105
-#: ../cat-tag-filter.php:153
-#: ../cat-tag-filter.php:193
+#: ../cat-tag-filter.php:159
+#: ../cat-tag-filter.php:203
 msgid "Any tag"
 msgstr ""
 
-#: ../cat-tag-filter.php:124
-#: ../cat-tag-filter.php:153
-#: ../cat-tag-filter.php:193
-msgid "Any category"
-msgstr ""
-
-#: ../cat-tag-filter.php:148
+#: ../cat-tag-filter.php:154
 msgid "Filter posts by category and tag"
 msgstr ""
 
-#: ../cat-tag-filter.php:153
-#: ../cat-tag-filter.php:193
+#: ../cat-tag-filter.php:159
+#: ../cat-tag-filter.php:203
 msgid "Filter"
 msgstr ""
 
-#: ../cat-tag-filter.php:153
-#: ../cat-tag-filter.php:193
+#: ../cat-tag-filter.php:159
+#: ../cat-tag-filter.php:203
 msgid "Show posts"
 msgstr ""
 
-#: ../cat-tag-filter.php:153
-#: ../cat-tag-filter.php:193
+#: ../cat-tag-filter.php:159
+#: ../cat-tag-filter.php:203
 msgid "Show posts from:"
 msgstr ""
 
-#: ../cat-tag-filter.php:153
-#: ../cat-tag-filter.php:193
+#: ../cat-tag-filter.php:159
+#: ../cat-tag-filter.php:203
 msgid "With tag:"
 msgstr ""
 
+#: ../cat-tag-filter.php:159
 #: ../cat-tag-filter.php:203
+msgid "Any category"
+msgstr ""
+
+#: ../cat-tag-filter.php:213
 msgid "Widget title"
 msgstr ""
 
-#: ../cat-tag-filter.php:209
+#: ../cat-tag-filter.php:220
 msgid "Categories dropdown label"
 msgstr ""
 
-#: ../cat-tag-filter.php:215
+#: ../cat-tag-filter.php:226
 msgid "All categories option text"
 msgstr ""
 
-#: ../cat-tag-filter.php:222
+#: ../cat-tag-filter.php:233
 msgid "Show categories post count"
 msgstr ""
 
-#: ../cat-tag-filter.php:227
+#: ../cat-tag-filter.php:238
 msgid "Coma separated category id's to exclude"
 msgstr ""
 
-#: ../cat-tag-filter.php:233
+#: ../cat-tag-filter.php:245
 msgid "Tags dropdown label"
 msgstr ""
 
-#: ../cat-tag-filter.php:239
+#: ../cat-tag-filter.php:251
 msgid "All tags option text"
 msgstr ""
 
-#: ../cat-tag-filter.php:245
+#: ../cat-tag-filter.php:257
 msgid "How to show tags:"
 msgstr ""
 
-#: ../cat-tag-filter.php:249
+#: ../cat-tag-filter.php:261
 msgid "Dropdown list"
 msgstr ""
 
-#: ../cat-tag-filter.php:252
+#: ../cat-tag-filter.php:264
 msgid "Checkboxes"
 msgstr ""
 
-#: ../cat-tag-filter.php:258
+#: ../cat-tag-filter.php:270
 msgid "Logic operator for multiple tags:"
 msgstr ""
 
-#: ../cat-tag-filter.php:262
+#: ../cat-tag-filter.php:274
 msgid "OR"
 msgstr ""
 
-#: ../cat-tag-filter.php:265
+#: ../cat-tag-filter.php:277
 msgid "AND"
 msgstr ""
 
-#: ../cat-tag-filter.php:272
+#: ../cat-tag-filter.php:284
 msgid "Show tags post count"
 msgstr ""
 
-#: ../cat-tag-filter.php:277
+#: ../cat-tag-filter.php:289
 msgid "Coma separated tag id's to exclude"
 msgstr ""
 
-#: ../cat-tag-filter.php:283
+#: ../cat-tag-filter.php:295
+msgid "Custom taxonomy name for tags"
+msgstr ""
+
+#: ../cat-tag-filter.php:301
+msgid "Custom taxonomy name for categories"
+msgstr ""
+
+#: ../cat-tag-filter.php:305
+msgid "List of registered taxonomies"
+msgstr ""
+
+#: ../cat-tag-filter.php:314
 msgid "Button title"
 msgstr ""
 
