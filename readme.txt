@@ -36,16 +36,18 @@ If your theme doesn't support widgets, you can use this code:
 Here is a full list of default $instance arguments:
 `'title' => 'Filter'
 'button_title' => 'Show posts'
-'cat_list_label' => 'Show posts from:
+'cat_list_label' => 'Show posts from:'
 'tag_list_label' => 'With tag:' 
 'all_cats_text' => 'Any category'
 'all_tags_text' => 'Any tag'
 'cats_count' => 1 
 'tags_count' => 0 
-'tags_logic' => 'AND' 
-'tags_type' => 'dropdown'
+'tags_logic' => 1 // 1 for AND and 0 for OR logic operator
+'tags_type' => 1 // 1 for checkboxes and 0 for dropdown 
 'exclude_tags' => ''
 'exclude_cats' => ''
+'tag_tax' => 'post_tag', 
+'category_tax' => 'category'
 `
 
 If you want to override some settings, for example get rid of title and turn on the counter for tag list use this code:
