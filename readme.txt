@@ -42,7 +42,7 @@ Here is a full list of default $instance arguments:
 'all_tags_text' => 'Any tag'
 'cats_count' => 1 
 'tags_count' => 0 
-'tags_logic' => 'AND' 
+'tags_logic' => '1' //1 for AND and 0 for OR logic operator
 'tags_type' => 'dropdown'
 'exclude_tags' => ''
 'exclude_cats' => ''
