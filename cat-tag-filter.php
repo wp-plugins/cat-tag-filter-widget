@@ -4,7 +4,7 @@ Plugin Name: Cat + Tag Filter
 Plugin URI: http://wordpress.org/extend/plugins/cat-tag-filter-widget/
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
-Version: 0.6
+Version: 0.7
 Author URI: http://ajayver.com/ 
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
@@ -86,9 +86,41 @@ function cat_options(){
 function tag_options($type){
   global $ctf_options, $current_tax;
   
-  if ($ctf_options['exclude_tags'] != '') $args = 'exclude=' . $ctf_options['exclude_tags']; 
+  if ($ctf_options['exclude_tags'] != '') $args['exclude'] = $ctf_options['exclude_tags']; 
   else $args = '';
+  if($current_tax[cats][0]){
+
+  $cat_args = array(
+	'cat'      => $current_tax[cats][0]
+);
+query_posts($cat_args);
+    if(have_posts()): while (have_posts()) : the_post();
+        $all_tag_objects = get_the_terms($post->ID, $ctf_options['tag_tax']);
+        if($all_tag_objects){
+			$ctf_options['exclude_tags'] = str_replace(" ", "", $ctf_options['exclude_tags']);
+			$exclude = explode(',', $ctf_options['exclude_tags']);
+            foreach($all_tag_objects as $tag) {
+                if($tag->count > 0) {
+				if (!in_array($tag->term_id, $exclude)) $all_tag_ids[] = $tag->term_id;
+				}
+            }
+        }
+    endwhile;
+	endif;
+    $tags = array_unique($all_tag_ids);
+	if (!empty($tags)){
+		foreach ($tags as $tag){
+		$include .= $tag . ',';
+		}
+		$include = substr($include, 0, -1);
+		$args['include'] = $include;
+	
+	}
+	
+}
   $tags = get_terms($ctf_options['tag_tax'],$args);
+
+  
   if ($type == 1){
    $options .= '<ul>';
   foreach ($tags as $tag) {
