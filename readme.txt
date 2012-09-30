@@ -73,6 +73,9 @@ None.
 
 == Changelog ==
 
+= 0.8.1 =
+* fixed a bug with tags including\excluding.
+
 = 0.8 =
 * Widget shows only corresponding tags for a chosen category.
 * It is now possible to include categories and tags instead of excluding
