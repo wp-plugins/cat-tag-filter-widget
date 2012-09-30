@@ -4,7 +4,7 @@ Plugin Name: Cat + Tag Filter
 Plugin URI: http://wordpress.org/extend/plugins/cat-tag-filter-widget/
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
-Version: 0.8.1
+Version: 0.8.2
 Author URI: http://ajayver.com/ 
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
@@ -89,27 +89,27 @@ function cat_options(){ //get categories dropdown list
 function tag_options($type){ //get tags
   global $ctf_options, $current_tax;
   
-  if($current_tax[cats][0]){
+	if($current_tax[cats][0]){
 
-	$cat_args = array(
-		'cat'      => $current_tax[cats][0]
-	);
-	query_posts($cat_args);
-    if(have_posts()): while (have_posts()) : the_post();
-        $all_tag_objects = get_the_terms($post->ID, $ctf_options['tag_tax']);
-        if($all_tag_objects){	
-            foreach($all_tag_objects as $tag) {
-                if($tag->count > 0) $all_tag_ids[] = $tag->term_id;
-            }
-        }
-    endwhile;
-	endif;
-    $tags = array_unique($all_tag_ids);
-	if (!empty($tags)){
+		$cat_args = array(
+			'cat'      => $current_tax[cats][0]
+		);
+		query_posts($cat_args);
+		if(have_posts()): while (have_posts()) : the_post();
+			$all_tag_objects = get_the_terms($post->ID, $ctf_options['tag_tax']);
+			if($all_tag_objects){	
+				foreach($all_tag_objects as $tag) {
+					if($tag->count > 0) $all_tag_ids[] = $tag->term_id;
+				}
+			}
+		endwhile;
+		endif;
+		$tags = array_unique($all_tag_ids);
+		
 		if ($ctf_options['exclude_tags'] != ''){
 			$ctf_options['exclude_tags'] = str_replace(" ", "", $ctf_options['exclude_tags']);
 			$exclude = explode(',', $ctf_options['exclude_tags']);
-		}
+		
 		
 		if ($ctf_options['clude_tags'] == 'include') {
 			foreach ($tags as $tag){
@@ -122,12 +122,21 @@ function tag_options($type){ //get tags
 			}
 		}
 		
+		}
 		$include = substr($include, 0, -1);
 		$args['include'] = $include;
 	
 	}
-	
-}
+	else {
+		
+		$args[$ctf_options['clude_tags']] = $ctf_options['exclude_tags'];
+		
+	}
+
+
+		
+		
+		
   $tags = get_terms($ctf_options['tag_tax'],$args);
 
   
