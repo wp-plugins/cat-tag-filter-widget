@@ -73,7 +73,7 @@ None.
 
 == Changelog ==
 
-= 0.8.2 =
+= 0.8.3 =
 * fixed a bug with tags including\excluding.
 
 = 0.8 =
