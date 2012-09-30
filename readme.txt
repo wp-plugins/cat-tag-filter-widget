@@ -40,7 +40,7 @@ Here is a full list of default $instance arguments:
 'all_tags_text' => 'Any tag'
 'cats_count' => 1 
 'tags_count' => 0 
-'tag_logic' => 1 // 1 for AND and 0 for OR logic operator
+'tag_logic' => 1 // 1 for AND and 0 for OR logic operator 
 'tag_type' => 1 // 1 for checkboxes and 0 for dropdown 
 'clude_tags' => 'exclude' //can be 'include' or 'exclude'
 'exclude_tags' => '' //used for including tags also, if clude_tags is set to 'include'
