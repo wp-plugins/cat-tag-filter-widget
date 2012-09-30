@@ -89,8 +89,6 @@ function cat_options(){ //get categories dropdown list
 function tag_options($type){ //get tags
   global $ctf_options, $current_tax;
   
-  //if ($ctf_options['exclude_tags'] != '') $args[$ctf_options['clude_tags']] = $ctf_options['exclude_tags']; 
-  //else $args = '';
   if($current_tax[cats][0]){
 
 	$cat_args = array(
