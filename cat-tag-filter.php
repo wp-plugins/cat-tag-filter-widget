@@ -89,7 +89,7 @@ function cat_options(){ //get categories dropdown list
 function tag_options($type){ //get tags
   global $ctf_options, $current_tax;
   
-	if($current_tax[cats][0]){
+	if($current_tax['cats'][0]){
 
 		$cat_args = array(
 			'cat'      => $current_tax[cats][0]
@@ -122,6 +122,11 @@ function tag_options($type){ //get tags
 			}
 		}
 		
+		}
+		else {
+			foreach ($tags as $tag){
+				$include .= $tag . ',';
+			}
 		}
 		$include = substr($include, 0, -1);
 		$args['include'] = $include;
