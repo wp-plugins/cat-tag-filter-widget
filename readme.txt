@@ -4,7 +4,7 @@ Donate link: http://goo.gl/SCdKg
 Tags: filter, tags, categories, widget
 Requires at least: 2.8
 Tested up to: 3.4.2
-Stable tag: 0.8
+Stable tag: 0.8.1
 
 This plugin adds a widget to your WordPress site that gives your visitors an ability to filter all your posts by a category or/and tag.
 
