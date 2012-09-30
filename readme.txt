@@ -19,8 +19,6 @@ If your WordPress template doesn't support widgets, please see the `Installation
 
 == Installation ==
 
-!If you failed to install 0.1 version, delete Cat + Tag Filter from admin console and install 0.2 version.
-
 1. Go to your Wordpress admin dashboard -> Plugins -> Add new, then search for **Cat + Tag Fliter** and agree to install it.
 
 If it didn't work, try this:
@@ -42,12 +40,12 @@ Here is a full list of default $instance arguments:
 'all_tags_text' => 'Any tag'
 'cats_count' => 1 
 'tags_count' => 0 
-'tags_logic' => 1 // 1 for AND and 0 for OR logic operator
-'tags_type' => 1 // 1 for checkboxes and 0 for dropdown 
-'clude_tags' => 'exclude'
-'exclude_tags' => ''
-'clude_cats' => 'exclude'
-'exclude_cats' => ''
+'tag_logic' => 1 // 1 for AND and 0 for OR logic operator
+'tag_type' => 1 // 1 for checkboxes and 0 for dropdown 
+'clude_tags' => 'exclude' //can be 'include' or 'exclude'
+'exclude_tags' => '' //used for including tags also, if clude_tags is set to 'include'
+'clude_cats' => 'exclude' //can be 'include' or 'exclude'
+'exclude_cats' => '' //used for including categories also, if clude_cats is set to 'include'
 'tag_tax' => 'post_tag', 
 'category_tax' => 'category'
 `
