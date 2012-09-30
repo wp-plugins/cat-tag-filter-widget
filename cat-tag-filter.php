@@ -107,20 +107,20 @@ function tag_options($type){ //get tags
 		$tags = array_unique($all_tag_ids);
 		
 		if ($ctf_options['exclude_tags'] != ''){
+			
 			$ctf_options['exclude_tags'] = str_replace(" ", "", $ctf_options['exclude_tags']);
 			$exclude = explode(',', $ctf_options['exclude_tags']);
-		
-		
-		if ($ctf_options['clude_tags'] == 'include') {
-			foreach ($tags as $tag){
-				if (in_array($tag, $exclude)) $include .= $tag . ',';
+			
+			if ($ctf_options['clude_tags'] == 'include') {
+				foreach ($tags as $tag){
+					if (in_array($tag, $exclude)) $include .= $tag . ',';
+				}
 			}
-		}
-		else if ($ctf_options['clude_tags'] == 'exclude') {
-			foreach ($tags as $tag){
-				if (!in_array($tag, $exclude)) $include .= $tag . ',';
+			else if ($ctf_options['clude_tags'] == 'exclude') {
+				foreach ($tags as $tag){
+					if (!in_array($tag, $exclude)) $include .= $tag . ',';
+				}
 			}
-		}
 		
 		}
 		else {
