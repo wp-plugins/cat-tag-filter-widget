@@ -4,7 +4,7 @@ Plugin Name: Cat + Tag Filter
 Plugin URI: http://wordpress.org/extend/plugins/cat-tag-filter-widget/
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
-Version: 0.8.3
+Version: 0.8.4
 Author URI: http://ajayver.com/ 
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
@@ -88,7 +88,8 @@ function cat_options(){ //get categories dropdown list
 }
 function tag_options($type){ //get tags
   global $ctf_options, $current_tax;
-  
+	$there_are_tags = true;
+	$args = '';
 	if($current_tax['cats'][0]){
 
 		$cat_args = array(
@@ -104,6 +105,8 @@ function tag_options($type){ //get tags
 			}
 		endwhile;
 		endif;
+		if (isset($all_tag_ids)){
+		
 		$tags = array_unique($all_tag_ids);
 		
 		if ($ctf_options['exclude_tags'] != ''){
@@ -129,7 +132,12 @@ function tag_options($type){ //get tags
 			}
 		}
 		$include = substr($include, 0, -1);
+		
 		$args['include'] = $include;
+		}
+		
+		else $there_are_tags = false;
+		
 	
 	}
 	else {
@@ -142,10 +150,11 @@ function tag_options($type){ //get tags
 		
 		
 		
-  $tags = get_terms($ctf_options['tag_tax'],$args);
+  if ($there_are_tags) $tags = get_terms($ctf_options['tag_tax'],$args);
 
   
 if ($type == 1){
+	if ($there_are_tags){
 	$options .= '<ul>';
 	foreach ($tags as $tag) {
 		$options .= '<li>'; 
@@ -159,9 +168,11 @@ if ($type == 1){
 		$options .= '</li>';    
 	}
 	$options .= '</ul>';
+	}
+	else $options .= '<ul><li><input type="checkbox" name="tag[]" value="-1" disabled>' .  __('No tags here', 'cat-tag-filter')  . '</li></ul>';
   }
   else {  
- 
+	if ($there_are_tags){
 	$options .= '<select name="' . "tag[]" . '" id="ctf-tag-select" ><option value="-1">';
 	if ($ctf_options['all_tags_text'] != '') $options .= $ctf_options['all_tags_text']; 
 	else $options .=__('Any tag', 'cat-tag-filter');
@@ -175,8 +186,11 @@ if ($type == 1){
 		$options .= $tag->name;
 		if ($ctf_options['tags_count'] == 1) $options .= ' (' . $tag->count . ')';
 		$options .= '</option>';    
-	}
-  $options .= '</select>'; }
+		}
+	$options .= '</select>';
+	} 
+	else $options .= '<select name="tag[]" id="ctf-tag-select" disabled ><option value="-1">' .  __('No tags here', 'cat-tag-filter')  . '</option></select>';
+  }
   return $options;
 }
 function ctf_widget(){
