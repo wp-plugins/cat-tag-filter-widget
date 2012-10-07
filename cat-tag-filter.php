@@ -4,7 +4,7 @@ Plugin Name: Cat + Tag Filter
 Plugin URI: http://wordpress.org/extend/plugins/cat-tag-filter-widget/
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
-Version: 0.8.4
+Version: 0.8.5
 Author URI: http://ajayver.com/ 
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
@@ -90,10 +90,11 @@ function tag_options($type){ //get tags
   global $ctf_options, $current_tax;
 	$there_are_tags = true;
 	$args = '';
-	if($current_tax['cats'][0]){
+	if($current_tax['cats'][0] && $ctf_options['corresponding_tags'] == 1){
 
 		$cat_args = array(
-			'cat'      => $current_tax[cats][0]
+			'cat'      => $current_tax[cats][0],
+			'posts_per_page' => -1
 		);
 		query_posts($cat_args);
 		if(have_posts()): while (have_posts()) : the_post();
@@ -101,6 +102,7 @@ function tag_options($type){ //get tags
 			if($all_tag_objects){	
 				foreach($all_tag_objects as $tag) {
 					if($tag->count > 0) $all_tag_ids[] = $tag->term_id;
+					echo '<!--' . $tag->term_id . '-->';
 				}
 			}
 		endwhile;
@@ -124,6 +126,8 @@ function tag_options($type){ //get tags
 					if (!in_array($tag, $exclude)) $include .= $tag . ',';
 				}
 			}
+			
+			if ($include == '') $there_are_tags = false;
 		
 		}
 		else {
@@ -132,6 +136,7 @@ function tag_options($type){ //get tags
 			}
 		}
 		$include = substr($include, 0, -1);
+		
 		
 		$args['include'] = $include;
 		}
@@ -148,8 +153,17 @@ function tag_options($type){ //get tags
 
 
 		
-		
-		
+	echo "<!--";	
+	echo "\n";
+	echo  $ctf_options['clude_tags'] . ' tags: ' . $ctf_options['exclude_tags'] . "\n";
+	echo  $ctf_options['clude_cats'] . ' cats: ' . $ctf_options['exclude_cats'] . "\n";
+	echo "current category: " . $current_tax['cats'][0] . "\n";
+	echo 'corresponding tags for this category: ';
+	print_r($all_tag_ids);
+	echo "\n";
+	echo 'Final tags to include: ';
+	print_r($args);	
+	echo "-->";	
   if ($there_are_tags) $tags = get_terms($ctf_options['tag_tax'],$args);
 
   
@@ -233,7 +247,7 @@ class cat_tag_filter extends WP_Widget {
   }
   /** @see WP_Widget::widget */
   function widget($args, $instance) {	
-	  $defaults = array( 'title' => __('Filter', 'cat-tag-filter'), 'button_title' => __('Show posts', 'cat-tag-filter'), 'cat_list_hide' => false,  'cat_list_label' => __('Show posts from:', 'cat-tag-filter'), 'tag_list_label' => __('With tag:', 'cat-tag-filter'), 'all_cats_text' => __('Any category', 'cat-tag-filter'), 'all_tags_text' => __('Any tag', 'cat-tag-filter'), 'cats_count' => 1, 'tags_count' => 0, 'tag_logic' => 1, 'tag_type' => 0, 'exclude_tags' => '', 'exclude_cats' => '', 'clude_tags' => 'exclude', 'clude_cats' => 'exclude', 'tag_tax' => 'post_tag', 'category_tax' => 'category');
+	  $defaults = array( 'title' => __('Filter', 'cat-tag-filter'), 'button_title' => __('Show posts', 'cat-tag-filter'), 'cat_list_hide' => false,  'cat_list_label' => __('Show posts from:', 'cat-tag-filter'), 'tag_list_label' => __('With tag:', 'cat-tag-filter'), 'all_cats_text' => __('Any category', 'cat-tag-filter'), 'all_tags_text' => __('Any tag', 'cat-tag-filter'), 'corresponding_tags' => '1', 'cats_count' => 1, 'tags_count' => 0, 'tag_logic' => 1, 'tag_type' => 0, 'exclude_tags' => '', 'exclude_cats' => '', 'clude_tags' => 'exclude', 'clude_cats' => 'exclude', 'tag_tax' => 'post_tag', 'category_tax' => 'category');
     $instance = wp_parse_args( (array) $instance, $defaults );
     extract( $args );
     global $ctf_options;
@@ -245,6 +259,7 @@ class cat_tag_filter extends WP_Widget {
     $ctf_options['all_cats_text'] = apply_filters('widget_title', $instance['all_cats_text']);
     $ctf_options['all_tags_text'] = apply_filters('widget_title', $instance['all_tags_text']);
     $ctf_options['cats_count'] =  $instance['cats_count'];
+	$ctf_options['corresponding_tags'] =  $instance['corresponding_tags'];
     $ctf_options['tags_count'] =  $instance['tags_count'];
 	$ctf_options['tag_logic'] =  $instance['tag_logic'];
 	$ctf_options['tag_type'] =  $instance['tag_type'];
@@ -270,6 +285,7 @@ class cat_tag_filter extends WP_Widget {
   	$instance['all_cats_text'] = strip_tags($new_instance['all_cats_text']);
   	$instance['all_tags_text'] = strip_tags($new_instance['all_tags_text']);
   	$instance['cats_count'] = $new_instance['cats_count'];
+	$instance['corresponding_tags'] = $new_instance['corresponding_tags'];
   	$instance['tags_count'] = $new_instance['tags_count'];
 	$instance['tag_logic'] = $new_instance['tag_logic'];
 	$instance['tag_type'] = $new_instance['tag_type'];
@@ -283,7 +299,7 @@ class cat_tag_filter extends WP_Widget {
   }
   /** @see WP_Widget::form */
   function form($instance) {   
-    $defaults = array( 'title' => __('Filter', 'cat-tag-filter'), 'button_title' => __('Show posts', 'cat-tag-filter'), 'cat_list_hide' => false, 'cat_list_label' => __('Show posts from:', 'cat-tag-filter'), 'tag_list_label' => __('With tag:', 'cat-tag-filter'), 'all_cats_text' => __('Any category', 'cat-tag-filter'), 'all_tags_text' => __('Any tag', 'cat-tag-filter'), 'cats_count' => 1, 'tags_count' => 0, 'tag_logic' => 1, 'tag_type' => 0, 'exclude_tags' => '', 'exclude_cats' => '', 'clude_tags' => 'exclude', 'clude_cats' => 'exclude', 'tag_tax' => 'post_tag', 'category_tax' => 'category' );
+    $defaults = array( 'title' => __('Filter', 'cat-tag-filter'), 'button_title' => __('Show posts', 'cat-tag-filter'), 'cat_list_hide' => false, 'cat_list_label' => __('Show posts from:', 'cat-tag-filter'), 'tag_list_label' => __('With tag:', 'cat-tag-filter'), 'all_cats_text' => __('Any category', 'cat-tag-filter'), 'all_tags_text' => __('Any tag', 'cat-tag-filter'), 'corresponding_tags' => '1', 'cats_count' => 1, 'tags_count' => 0, 'tag_logic' => 1, 'tag_type' => 0, 'exclude_tags' => '', 'exclude_cats' => '', 'clude_tags' => 'exclude', 'clude_cats' => 'exclude', 'tag_tax' => 'post_tag', 'category_tax' => 'category' );
   	$instance = wp_parse_args( (array) $instance, $defaults ); 				
     ?>   
 	<p>
@@ -380,6 +396,12 @@ class cat_tag_filter extends WP_Widget {
         <?php _e('Show tags post count', 'cat-tag-filter'); ?> 
       </label>   
     </p>  
+	<p>        
+      <input type="checkbox" id="ctf-corresponding-tags" name="<?php echo $this->get_field_name('corresponding_tags'); ?>" value="1" <?php if ($instance['corresponding_tags'] == 1) echo "checked ";?>/>
+      <label for="ctf-corresponding-tags">
+        <?php _e('Show only corresponding tags for current category', 'cat-tag-filter'); ?> 
+      </label>   
+    </p> 
 	<p>    
       <label for="ctf-exclude_tags">
         <?php _e('Coma separated tag id\'s to ', 'cat-tag-filter'); ?><select name="<?php echo $this->get_field_name('clude_tags'); ?>" id="ctf-clude-tags" >   
