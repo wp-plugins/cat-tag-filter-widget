@@ -152,18 +152,6 @@ function tag_options($type){ //get tags
 	}
 
 
-		
-	echo "<!--";	
-	echo "\n";
-	echo  $ctf_options['clude_tags'] . ' tags: ' . $ctf_options['exclude_tags'] . "\n";
-	echo  $ctf_options['clude_cats'] . ' cats: ' . $ctf_options['exclude_cats'] . "\n";
-	echo "current category: " . $current_tax['cats'][0] . "\n";
-	echo 'corresponding tags for this category: ';
-	print_r($all_tag_ids);
-	echo "\n";
-	echo 'Final tags to include: ';
-	print_r($args);	
-	echo "-->";	
   if ($there_are_tags) $tags = get_terms($ctf_options['tag_tax'],$args);
 
   
