@@ -73,6 +73,9 @@ None.
 
 == Changelog ==
 
+= 0.9 =
+* Added permalink support.
+
 = 0.8.4 =
 * Added an option to switch off corresponding tags mode.
 * fixed layout in categories with no corresponding tags.

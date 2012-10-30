@@ -4,7 +4,7 @@ Plugin Name: Cat + Tag Filter
 Plugin URI: http://wordpress.org/extend/plugins/cat-tag-filter-widget/
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
-Version: 0.8.5
+Version: 0.9
 Author URI: http://ajayver.com/ 
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
@@ -15,14 +15,14 @@ if ($_POST["ctf_submit"] == 1) { //if submit button was pressed
 	require( '../../../wp-load.php' ); //require wordpress core functions
 	$cat = '';	//initialize variables for category and tag parts of the url
 	$tag = '';
-	$tag_prefix = '?'. $_POST["tag_prefix"] .'='; //get tag and category prefix
-	$cat_prefix = '?'. $_POST["cat_prefix"] .'=';
+	$tag_prefix = $_POST["tag_prefix"] .'/'; //get tag and category prefix
+	$cat_prefix = $_POST["cat_prefix"] .'/';
 	if ($_POST["tag_logic"] == 1) $tag_logic = '+'; //logic for tags (AND or OR)
 	else $tag_logic = ',';
 	if ($_POST["cat"] != -1) { //if a category was chosen
 		$_POST['cat'] = get_term($_POST['cat'], $_POST['category_tax']); //get category slug from it's id
 		$cat = '/'. $cat_prefix . $_POST['cat']->slug; //add it to category part of the url
-		$tag_prefix = '&' . $_POST["tag_prefix"] . '='; //add & to tag part of url
+		$tag_prefix = '/' . $_POST["tag_prefix"] . '/'; //add & to tag part of url
 	} 
 
 	if ($_POST["tag"] && $_POST["tag"][0] != -1) { //if any tags were chosen
@@ -36,7 +36,7 @@ if ($_POST["ctf_submit"] == 1) { //if submit button was pressed
 	}	
 	
 	if ($cat == '' && $tag == '' && $_POST["blog_url"] != '') $url = $_POST["home_url"] . '/' . $_POST["blog_url"]; //if no category or no tag was chosen, just create a link to blog
-	else $url = $_POST["home_url"] . $cat . $tag;  //else, create a link to blog + category and tag arguments
+	else $url = $_POST["home_url"]. '/' . $cat . $tag;  //else, create a link to blog + category and tag arguments
 	header('Location: ' . $url); //redirect user to the created url
 	exit;
 	
@@ -216,9 +216,9 @@ function ctf_widget(){
 	<input type="hidden" name="blog_url" value="<?php $blog_url = get_option( 'page_for_posts'); if ($blog_url != 0) echo get_page_uri($blog_url); ?>" />
 	<input type="hidden" name="tag_logic" value="<?php echo $ctf_options['tag_logic'] ?>" />
 	<?php $taxonomies=get_taxonomies('','','');	?>
-	<input type="hidden" name="tag_prefix" value="<?php echo $taxonomies[$ctf_options['tag_tax']]->query_var ?>" />
+	<input type="hidden" name="tag_prefix" value="<?php echo $taxonomies[$ctf_options['tag_tax']]->rewrite['slug'] ?>" />
 	<input type="hidden" name="category_tax" value="<?php echo $ctf_options['category_tax'] ?>" />
-	<input type="hidden" name="cat_prefix" value="<?php echo $taxonomies[$ctf_options['category_tax']]->query_var ?>" />
+	<input type="hidden" name="cat_prefix" value="<?php echo $taxonomies[$ctf_options['category_tax']]->rewrite['slug'] ?>" />
     <input id="ctf-submit" class="button" type="submit"  value="<?php echo $ctf_options['button_title']; ?>"/>  
   </form>  
   <?php
@@ -233,6 +233,8 @@ class cat_tag_filter extends WP_Widget {
     $widget_ops = array('classname' => 'cat-tag-filter', 'description' => __('Filter posts by category and tag', 'cat_tag_filter') );
     parent::WP_Widget(false, $name = 'Cat + Tag Filter', $widget_ops);	
   }
+
+
   /** @see WP_Widget::widget */
   function widget($args, $instance) {	
 	  $defaults = array( 'title' => __('Filter', 'cat-tag-filter'), 'button_title' => __('Show posts', 'cat-tag-filter'), 'cat_list_hide' => false,  'cat_list_label' => __('Show posts from:', 'cat-tag-filter'), 'tag_list_label' => __('With tag:', 'cat-tag-filter'), 'all_cats_text' => __('Any category', 'cat-tag-filter'), 'all_tags_text' => __('Any tag', 'cat-tag-filter'), 'corresponding_tags' => '1', 'cats_count' => 1, 'tags_count' => 0, 'tag_logic' => 1, 'tag_type' => 0, 'exclude_tags' => '', 'exclude_cats' => '', 'clude_tags' => 'exclude', 'clude_cats' => 'exclude', 'tag_tax' => 'post_tag', 'category_tax' => 'category');
@@ -259,6 +261,7 @@ class cat_tag_filter extends WP_Widget {
 	$ctf_options['tag_tax'] = $instance['tag_tax'];
     echo $before_widget; 
     if ( $ctf_options['title'] ) echo $before_title . $ctf_options['title'] . $after_title; 
+
     ctf_widget();
     echo $after_widget; 
   }
@@ -429,7 +432,9 @@ foreach ($taxonomies as $taxonomy ) {
     </p>  
 	
   <?php 
+
   }
+
 } // class Cat + Tag Filter
 // register Cat + Tag Filter widget
 	if (function_exists('load_plugin_textdomain'))
@@ -437,4 +442,30 @@ foreach ($taxonomies as $taxonomy ) {
 		load_plugin_textdomain('cat-tag-filter', '/' .PLUGINDIR. '/' .dirname(plugin_basename(__FILE__)) . '/languages/' );
 	}
 add_action('widgets_init', create_function('', 'return register_widget("cat_tag_filter");')); 
+
+function add_rewrite_rules() {
+    global $wp_rewrite;
+ 	$ctf_options = get_option('widget_cat_tag_filter');
+	foreach ($ctf_options as $widget_options){
+	 	if ($widget_options['category_tax']){
+	 	
+	 		$taxonomies = get_taxonomies('','','');
+		
+		    $new_rules = array(
+		         $taxonomies[$widget_options['category_tax']]->rewrite['slug'] . '/(.+?)/' . $taxonomies[$widget_options['tag_tax']]->rewrite['slug'] . '/(.+?)/?$' => 'index.php?' . $taxonomies[$widget_options['category_tax']]->query_var . '=' . $wp_rewrite->preg_index(1) . '&' . $taxonomies[$widget_options['tag_tax']]->query_var . '=' . $wp_rewrite->preg_index(2)
+		    );
+		    $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
+
+	 		}
+	 	}
+ 	
+
+ 	
+	}
+	
+
+add_action( 'generate_rewrite_rules', 'add_rewrite_rules' );
+
+
+
 ?>
