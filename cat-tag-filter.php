@@ -234,6 +234,12 @@ class cat_tag_filter extends WP_Widget {
     parent::WP_Widget(false, $name = 'Cat + Tag Filter', $widget_ops);	
   }
 
+  static function install() {
+		//Ensure the $wp_rewrite global is loaded
+		global $wp_rewrite;
+		//Call flush_rules() as a method of the $wp_rewrite object
+		$wp_rewrite->flush_rules();
+     }
 
   /** @see WP_Widget::widget */
   function widget($args, $instance) {	
@@ -286,6 +292,9 @@ class cat_tag_filter extends WP_Widget {
 	$instance['clude_cats'] = $new_instance['clude_cats'];
 	$instance['category_tax'] = $new_instance['category_tax'];
 	$instance['tag_tax'] = $new_instance['tag_tax'];
+	global $wp_rewrite;
+	//Call flush_rules() as a method of the $wp_rewrite object
+	$wp_rewrite->flush_rules();
     return $instance;
   }
   /** @see WP_Widget::form */
@@ -466,6 +475,6 @@ function add_rewrite_rules() {
 
 add_action( 'generate_rewrite_rules', 'add_rewrite_rules' );
 
-
+register_activation_hook( 'cat-tag-filter-widget/cat-tag-filter.php', array('cat_tag_filter', 'install') );
 
 ?>
