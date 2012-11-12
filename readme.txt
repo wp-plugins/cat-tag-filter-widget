@@ -20,6 +20,8 @@ If your WordPress template doesn't support widgets, please see the `Installation
 == Installation ==
 
 1. Go to your Wordpress admin dashboard -> Plugins -> Add new, then search for **Cat + Tag Fliter** and agree to install it.
+2. Go to youк widget options and change the widgets settings.
+3. Sometimes it is needed to manually flush rewrite rules. Go to your Permalinks Options and change it to something else, save, and then change it back to normal.
 
 If it didn't work, try this:
 
@@ -72,6 +74,9 @@ You can also override `before_title` and `after_title` the same way.
 None.
 
 == Changelog ==
+
+= 0.9 =
+* Added permalinks support. If it doesn't work - flush rewrite rules!
 
 = 0.8.4 =
 * Added an option to switch off corresponding tags mode.
