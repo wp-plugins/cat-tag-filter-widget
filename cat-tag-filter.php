@@ -107,6 +107,7 @@ function tag_options($type){ //get tags
 			}
 		endwhile;
 		endif;
+		wp_reset_query();
 		if (isset($all_tag_ids)){
 		
 		$tags = array_unique($all_tag_ids);
@@ -235,10 +236,7 @@ class cat_tag_filter extends WP_Widget {
   }
 
   static function install() {
-		//Ensure the $wp_rewrite global is loaded
-		global $wp_rewrite;
-		//Call flush_rules() as a method of the $wp_rewrite object
-		$wp_rewrite->flush_rules();
+		flush_rewrite_rules();
      }
 
   /** @see WP_Widget::widget */
@@ -292,9 +290,7 @@ class cat_tag_filter extends WP_Widget {
 	$instance['clude_cats'] = $new_instance['clude_cats'];
 	$instance['category_tax'] = $new_instance['category_tax'];
 	$instance['tag_tax'] = $new_instance['tag_tax'];
-	global $wp_rewrite;
-	//Call flush_rules() as a method of the $wp_rewrite object
-	$wp_rewrite->flush_rules();
+	flush_rewrite_rules();
     return $instance;
   }
   /** @see WP_Widget::form */
