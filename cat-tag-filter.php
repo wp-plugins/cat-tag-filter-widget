@@ -4,7 +4,7 @@ Plugin Name: Cat + Tag Filter
 Plugin URI: http://wordpress.org/extend/plugins/cat-tag-filter-widget/
 Description: This plugin adds a widget to your WordPress site that allows your visitors to filter posts by category and tag.
 Author: Ajay Verma
-Version: 0.9
+Version: 0.9.1
 Author URI: http://ajayver.com/ 
 */
 /*  Copyright 2011  Verma Ajay  (email : ajayverma1986@gmail.com)
@@ -457,7 +457,9 @@ function add_rewrite_rules() {
 	 		$taxonomies = get_taxonomies('','','');
 		
 		    $new_rules = array(
-		         $taxonomies[$widget_options['category_tax']]->rewrite['slug'] . '/(.+?)/' . $taxonomies[$widget_options['tag_tax']]->rewrite['slug'] . '/(.+?)/?$' => 'index.php?' . $taxonomies[$widget_options['category_tax']]->query_var . '=' . $wp_rewrite->preg_index(1) . '&' . $taxonomies[$widget_options['tag_tax']]->query_var . '=' . $wp_rewrite->preg_index(2)
+		    	$taxonomies[$widget_options['category_tax']]->rewrite['slug'] . '/(.+?)/' . $taxonomies[$widget_options['tag_tax']]->rewrite['slug'] . '/(.+?)/page/?([0-9]{1,})/?$' => 'index.php?' . $taxonomies[$widget_options['category_tax']]->query_var . '=' . $wp_rewrite->preg_index(1) . '&' . $taxonomies[$widget_options['tag_tax']]->query_var . '=' . $wp_rewrite->preg_index(2) . '&paged=' . $wp_rewrite->preg_index(3),
+		        $taxonomies[$widget_options['category_tax']]->rewrite['slug'] . '/(.+?)/' . $taxonomies[$widget_options['tag_tax']]->rewrite['slug'] . '/(.+?)/?$' => 'index.php?' . $taxonomies[$widget_options['category_tax']]->query_var . '=' . $wp_rewrite->preg_index(1) . '&' . $taxonomies[$widget_options['tag_tax']]->query_var . '=' . $wp_rewrite->preg_index(2)
+		         
 		    );
 		    $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
 
