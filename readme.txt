@@ -75,23 +75,26 @@ None.
 
 == Changelog ==
 
+= 0.9.2 =
+* Fixed "Warning: Invalid argument supplied for foreach() in /wp-content/plugins/cat-tag-filter-widget/cat-tag-filter.php on line 454" for multisite wordpress
+
 = 0.9.1 =
-* fixed 404 on pages
+* Fixed 404 on pages
 
 = 0.9 =
 * Added permalinks support. If it doesn't work - flush rewrite rules!
 
 = 0.8.4 =
 * Added an option to switch off corresponding tags mode.
-* fixed layout in categories with no corresponding tags.
-* fixed corresponding tags for categories with more than one page of posts.
+* Fixed layout in categories with no corresponding tags.
+* Fixed corresponding tags for categories with more than one page of posts.
 
 
 = 0.8.4 =
-* fixed layout in categories with no corresponding tags.
+* Fixed layout in categories with no corresponding tags.
 
 = 0.8.3 =
-* fixed a bug with tags including\excluding.
+* Fixed a bug with tags including\excluding.
 
 = 0.8 =
 * Widget shows only corresponding tags for a chosen category.

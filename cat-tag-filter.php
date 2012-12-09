@@ -451,22 +451,23 @@ add_action('widgets_init', create_function('', 'return register_widget("cat_tag_
 function add_rewrite_rules() {
     global $wp_rewrite;
  	$ctf_options = get_option('widget_cat_tag_filter');
-	foreach ($ctf_options as $widget_options){
-	 	if ($widget_options['category_tax']){
-	 	
-	 		$taxonomies = get_taxonomies('','','');
-		
-		    $new_rules = array(
-		    	$taxonomies[$widget_options['category_tax']]->rewrite['slug'] . '/(.+?)/' . $taxonomies[$widget_options['tag_tax']]->rewrite['slug'] . '/(.+?)/page/?([0-9]{1,})/?$' => 'index.php?' . $taxonomies[$widget_options['category_tax']]->query_var . '=' . $wp_rewrite->preg_index(1) . '&' . $taxonomies[$widget_options['tag_tax']]->query_var . '=' . $wp_rewrite->preg_index(2) . '&paged=' . $wp_rewrite->preg_index(3),
-		        $taxonomies[$widget_options['category_tax']]->rewrite['slug'] . '/(.+?)/' . $taxonomies[$widget_options['tag_tax']]->rewrite['slug'] . '/(.+?)/?$' => 'index.php?' . $taxonomies[$widget_options['category_tax']]->query_var . '=' . $wp_rewrite->preg_index(1) . '&' . $taxonomies[$widget_options['tag_tax']]->query_var . '=' . $wp_rewrite->preg_index(2)
-		         
-		    );
-		    $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
+ 	if ($ctf_options){
+		foreach ($ctf_options as $widget_options){
+		 	if ($widget_options['category_tax']){
+		 	
+		 		$taxonomies = get_taxonomies('','','');
+			
+			    $new_rules = array(
+			    	$taxonomies[$widget_options['category_tax']]->rewrite['slug'] . '/(.+?)/' . $taxonomies[$widget_options['tag_tax']]->rewrite['slug'] . '/(.+?)/page/?([0-9]{1,})/?$' => 'index.php?' . $taxonomies[$widget_options['category_tax']]->query_var . '=' . $wp_rewrite->preg_index(1) . '&' . $taxonomies[$widget_options['tag_tax']]->query_var . '=' . $wp_rewrite->preg_index(2) . '&paged=' . $wp_rewrite->preg_index(3),
+			        $taxonomies[$widget_options['category_tax']]->rewrite['slug'] . '/(.+?)/' . $taxonomies[$widget_options['tag_tax']]->rewrite['slug'] . '/(.+?)/?$' => 'index.php?' . $taxonomies[$widget_options['category_tax']]->query_var . '=' . $wp_rewrite->preg_index(1) . '&' . $taxonomies[$widget_options['tag_tax']]->query_var . '=' . $wp_rewrite->preg_index(2)
+			         
+			    );
+			    $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
 
-	 		}
-	 	}
+		 		}
+		 }
  	
-
+	 }
  	
 	}
 	
